@@ -31,7 +31,6 @@ public class Cycle {
     public static final long DAYS = 3L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cycle_id")
     private Long id;
 
@@ -54,6 +53,14 @@ public class Cycle {
     private LocalDateTime startTime;
 
     public Cycle(Member member, Challenge challenge, Progress progress, LocalDateTime startTime) {
+        this.member = member;
+        this.challenge = challenge;
+        this.progress = progress;
+        this.startTime = startTime;
+    }
+
+    public Cycle(Long id, Member member, Challenge challenge, Progress progress, LocalDateTime startTime) {
+        this.id = id;
         this.member = member;
         this.challenge = challenge;
         this.progress = progress;

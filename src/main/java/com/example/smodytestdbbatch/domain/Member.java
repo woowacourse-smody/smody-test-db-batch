@@ -24,7 +24,6 @@ public class Member {
     private static final String DEFAULT_INTRODUCTION = "스모디로 작심삼일 시작!";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
     private Long id;
 

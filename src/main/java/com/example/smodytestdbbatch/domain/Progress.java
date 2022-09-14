@@ -4,10 +4,6 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.Optional;
-
-import com.woowacourse.smody.exception.BusinessException;
-import com.woowacourse.smody.exception.ExceptionData;
-
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -21,7 +17,7 @@ public enum Progress {
             if (isBetween(startTime, progressTime, 1L)) {
                 return FIRST;
             }
-            throw new BusinessException(ExceptionData.INVALID_PROGRESS_TIME);
+            throw new IllegalArgumentException();
         }
 
         @Override
@@ -42,7 +38,7 @@ public enum Progress {
             if (isBetween(startTime, progressTime, 2L)) {
                 return SECOND;
             }
-            throw new BusinessException(ExceptionData.INVALID_PROGRESS_TIME);
+            throw new IllegalArgumentException();
         }
 
         @Override
@@ -63,7 +59,7 @@ public enum Progress {
             if (isBetween(startTime, progressTime, 3L)) {
                 return SUCCESS;
             }
-            throw new BusinessException(ExceptionData.INVALID_PROGRESS_TIME);
+            throw new IllegalArgumentException();
         }
 
         @Override
@@ -81,7 +77,7 @@ public enum Progress {
     SUCCESS(3) {
         @Override
         public Progress increase(LocalDateTime startTime, LocalDateTime progressTime) {
-            throw new BusinessException(ExceptionData.ALREADY_SUCCESS);
+            throw new IllegalArgumentException();
         }
 
         @Override
